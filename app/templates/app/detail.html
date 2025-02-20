@@ -1,0 +1,26 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Details: </h1>
+
+<h3>Brand: {{ detail.title }}</h3>
+<h3>Category: {{ detail.category }}</h3>
+<h3>Color: {{ detail.color }}</h3>
+<h3>Year: {{ detail.year }}</h3>
+<h3> Milage: {{ detail.milage }}</h3>
+<h3> Egine capacity: {{ detail.engine_capacity }}</h3>
+
+
+<img src="{{ detail.image.url }}" style="width: 300; height; 400px;">
+
+<video controls style="width: 300; height: 400px;">
+    <source src="{{ detail.video.url }}" type="video/mp4">
+</video>
+
+</body>
+</html>
