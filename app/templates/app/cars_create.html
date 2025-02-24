@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<center>
+    <h1> Cars</h1>
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        <label> Title: </label>
+        <input type="text" name="title" placeholder="Enter title">
+
+        <br><br><br>
+        <label> color: </label>
+        <input type="number" name="color_id" placeholder="Enter color">
+
+        <br><br><br>
+        <label> Category: </label>
+        <input type="number" name="category_id" placeholder="Enter category">
+
+        <br><br><br>
+        <label> Year: </label>
+        <input type="text" name="year" placeholder="Enter year">
+
+        <br><br><br>
+
+        <label> Milage: </label>
+        <input type="number" name="milage" placeholder="Enter milage">
+
+        <br><br><br>
+        <label> Engine Capacity: </label>
+        <input type="number" name="engine_capacity" placeholder="Enter engine capacity">
+
+        <br><br><br>
+        <label> Image: </label>
+        <input type="file" name="image">
+
+
+        <br><br><br>
+
+        <button type="submit"> Save </button>
+
+    </form>
+</center>
+
+</body>
+</html>

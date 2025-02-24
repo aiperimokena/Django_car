@@ -32,10 +32,11 @@ class Car(models.Model):
     milage = models.PositiveIntegerField()
     engine_capacity = models.DecimalField(max_digits=3, decimal_places=2)
     image = models.ImageField(upload_to='media/detail_image')
-    video = models.FileField(upload_to='media/detail_audio')
+
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name = "Car"
         verbose_name_plural = "Cars"
+
