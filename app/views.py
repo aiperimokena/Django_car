@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import Car, Color, Category
+from .forms import CarCreateForm
 
 def view_index(request):
     cars = Car.objects.all()
+
+    if 'search' in request.GET:
+        search = request.GET['search']
+        cars = Car.objects.filter(title__icontains=search)
+
 
     return render(request, 'app/index.html', {'cars': cars})
 
@@ -13,6 +19,9 @@ def view_detail(request, pk):
     return render(request, 'app/detail.html', {'detail': detail})
 
 def cars_create(request):
+    categories = Category.objects.all()
+    colors = Color.objects.all()
+
     if request.method == 'POST':
         title = request.POST['title']
         year = request.POST['year']
@@ -31,5 +40,17 @@ def cars_create(request):
 
         car.save()
 
+        return redirect ('')
 
-    return render(request,'app/cars_create.html' )
+    return render(request, 'app/cars_create.html', {'categories': categories, "colors": colors})
+
+def car_create_2(request):
+
+    if request.method == 'POST':
+        form = CarCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("")
+    form = CarCreateForm()
+
+    return render(request, 'app/car_create_2.html',{'form': form})

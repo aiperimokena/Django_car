@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,11 +15,23 @@
 
         <br><br><br>
         <label> color: </label>
-        <input type="number" name="color_id" placeholder="Enter color">
+
+            <select name="color_id">
+              {% for color in colors%}
+                <option value="{{ color.id }}">{{ color.title }}</option>
+              {% endfor %}
+
+            </select>
 
         <br><br><br>
         <label> Category: </label>
-        <input type="number" name="category_id" placeholder="Enter category">
+
+          <select name="category_id">
+              {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.title }}</option>
+              {% endfor %}
+
+          </select>
 
         <br><br><br>
         <label> Year: </label>
