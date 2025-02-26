@@ -11,6 +11,7 @@
     <br><br><br>
         <form method="post" action="." enctype="multipart/form-data">
                 {% csrf_token %}
+            <a href="{% url 'delete' car.id %}" ><h4>Delete</h4></a>
                 <label> Title: </label>
                 <input type="text" name="title" placeholder="Enter title" value="{{ car.title }}">
 
@@ -57,6 +58,9 @@
                 <button type="submit"> Save </button>
 
         </form>
+
+
+<!--   easy option on Bilal's git hub -->
 
 
 </center>

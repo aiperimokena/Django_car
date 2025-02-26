@@ -86,3 +86,9 @@ def car_detail(request, pk):
 
 
     return render(request, 'app/car_detail.html', {'car': car, 'categories': categories, 'colors': colors })
+
+def delete_car_view(request, pk):
+    car = Car.objects.get(id=pk)
+    car.delete()
+
+    return redirect('')
