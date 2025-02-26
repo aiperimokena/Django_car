@@ -1,26 +1,63 @@
 {% load static %}
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
 </head>
 <body>
-<h1> Details: </h1>
+    <center>
+        <h1>Details</h1>
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
 
-<h3>Brand: {{ detail.title }}</h3>
-<h3>Category: {{ detail.category }}</h3>
-<h3>Color: {{ detail.color }}</h3>
-<h3>Year: {{ detail.year }}</h3>
-<h3> Milage: {{ detail.milage }}</h3>
-<h3> Egine capacity: {{ detail.engine_capacity }}</h3>
+            <label for="title">Title:</label>
+            <input type="text" name="title" placeholder="Enter title">
 
+            <br><br>
 
-<img src="{{ detail.image.url }}" style="width: 300; height; 400px;">
+            <label for="color">Color:</label>
+            <select id="color" name="color_id">
+                {% for color in colors %}
+                    <option value="{{ color.id }}">{{ color.title }}</option>
+                {% endfor %}
+            </select>
 
-<video controls style="width: 300; height: 400px;">
-    <source src="{{ detail.video.url }}" type="video/mp4">
-</video>
+            <br><br>
 
+            <label for="category">Category:</label>
+            <select id="category" name="category_id">
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.title }}</option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" placeholder="Enter year">
+
+            <br><br>
+
+            <label for="mileage">Mileage:</label>
+            <input type="number" id="mileage" name="mileage" placeholder="Enter mileage">
+
+            <br><br>
+
+            <label for="engine_capacity">Engine Capacity:</label>
+            <input type="number" id="engine_capacity" name="engine_capacity" placeholder="Enter engine capacity">
+
+            <br><br>
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image">
+
+            <br><br>
+
+            <button type="submit">Save</button>
+        </form>
+    </center>
 </body>
 </html>

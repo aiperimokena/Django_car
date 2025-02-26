@@ -1,6 +1,6 @@
 {% load static %}
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -55,18 +55,20 @@
     </form>
 </div>
 
-<!-- Car Cards -->
+
 <div class="container">
     <div class="row card-container">
         {% for car in cars %}
         <div class="col-md-4 col-sm-6">
             <div class="card shadow-sm">
-                <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
-                <div class="card-body text-center">
-                    <h5 class="car-title fw-bold">{{ car.title }}</h5>
-                    <p class="card-text text-muted">{{ car.description|truncatechars:25 }}</p>
-                    <a href="{% url 'detail' car.id %}" class="btn btn-outline-primary w-100">View Details</a>
-                </div>
+                <a href="{% url 'detail' car.id %}">
+                    <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
+                    <div class="card-body text-center">
+                        <h5 class="car-title fw-bold">{{ car.title }}</h5>
+                        <p class="card-text text-muted">{{ car.description|truncatechars:25 }}</p>
+                        <a href="{% url 'detail' car.id %}" class="btn btn-outline-primary w-100">View Details</a>
+                    </div>
+                </a>
             </div>
         </div>
         {% empty %}

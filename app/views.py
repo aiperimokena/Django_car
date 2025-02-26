@@ -54,3 +54,35 @@ def car_create_2(request):
     form = CarCreateForm()
 
     return render(request, 'app/car_create_2.html',{'form': form})
+
+def car_detail(request, pk):
+
+    categories = Category.objects.all()
+    colors = Color.objects.all()
+    car = Car.objects.get(id=pk)
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        year = request.POST['year']
+        engine_capacity = request.POST['engine_capacity']
+        color_id = request.POST['color_id']
+        category_id = request.POST['category_id']
+        image = request.FILES['image']
+        milage = request.POST['milage']
+
+        category = Category.objects.get(id=int(category_id))
+        color = Color.objects.get(id=int(color_id))
+
+        car.title = title
+        car.year = year
+        car.engine_capacity = engine_capacity
+        car.color_id = color_id
+        car.category_id = category_id
+        car.milage = milage
+        car.image = image
+
+        car.save()
+        return redirect('')
+
+
+    return render(request, 'app/car_detail.html', {'car': car, 'categories': categories, 'colors': colors })
